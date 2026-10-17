@@ -1,0 +1,24 @@
+<div class="w-72 h-dvh border-l border-gray-700">
+    <div class="w-full h-full rounded-2xl flex flex-col gap-6">
+        <div class="flex items-center gap-2 p-4 font-[vazir] border-b border-b-gray-700">
+            <div class="bg-gray-300 dark:bg-gray-900 text-black dark:text-white p-1 rounded-xl">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" aria-hidden="true">
+                    <path d="M7 18a4.5 4.5 0 0 1-.6-8.96A6 6 0 0 1 18 9.5a4.25 4.25 0 0 1-.5 8.5z" />
+                    <path d="M9.5 14.5h.01M12 14.5h.01M14.5 14.5h.01" />
+                </svg>
+            </div>
+            <div class="flex flex-col">
+                <p class="text-black dark:text-white font-bold">ویرالینک</p>
+                <small class="text-black/40 dark:text-white/30 text-xs">سرویس اشتراک</small>
+            </div>
+        </div>
+        <div class="flex flex-col gap-1 h-full justify-center px-4">
+            <vira-nav-item text="داشبورد" link="/dash/overview" />
+            <vira-nav-item kind="plans" text="پلن ها" link="/dash/plans" />
+            <vira-nav-item kind="wallet" text="کیف پول" link="/dash/wallet" />
+            <vira-nav-item kind="profile" text="پروفایل" link="/dash/profile" />
+        </div>
+        <vira-account />
+    </div>
+</div>
