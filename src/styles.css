@@ -6,3 +6,8 @@
     font-family: "vazir";
     src: url("./app/assets/Vazir.ttf");
 }
+
+@font-face {
+	font-family: "kufi";
+	src: url("./app/assets/NotoKufiArabic.ttf");
+}

@@ -1,18 +1,18 @@
-<div class="w-full h-screen bg-gray-200 dark:bg-gray-950 flex items-center justify-center">
+<div dir="rtl" class="w-full h-screen bg-gray-200 dark:bg-gray-950 flex items-center justify-center">
   <div class="grid place-items-center w-4/5 h-4/5">
     @switch (card()) {
     @case ('login') {
     <form
       class="flex flex-col justify-items-center items-center gap-4 dark:text-white rounded-4xl col-start-1 row-start-1"
       animate.enter="card-open" animate.leave="card-switch" (submit)="this.loginSubmit($event)">
-      <h1 class="font-bold text-3xl w-full">Welcome back!</h1>
+      <h1 class="font-bold text-3xl w-full">خوش برگشتی!</h1>
       <div class="flex flex-col gap-2">
         <div>
           <vira-auth-input kind="username" [to]="loginForm.username" />
           <ol class="list-disc">
             @if(this.loginForm.username().touched() && this.loginForm().invalid()) {
             @for(err of this.loginForm.username().errors(); track err) {
-            <li class="text-red-600 text-xs ml-6">{{ err.message }}</li>
+            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
             }
             }
           </ol>
@@ -22,20 +22,19 @@
           <ol class="list-disc">
             @if(this.loginForm.password().touched() && this.loginForm().invalid()) {
             @for(err of this.loginForm.password().errors(); track err) {
-            <li class="text-red-600 text-xs ml-6">{{ err.message }}</li>
+            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
             }
             }
           </ol>
         </div>
       </div>
       <div class="flex flex-col gap-4 w-full">
-        <input type="submit" value="Login"
+        <input type="submit" value="ورود"
           class="text-white dark:text-black font-semibold bg-gray-900 dark:bg-white w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:bg-black/80 dark:hover:bg-white/80" />
         <div class="flex flex-col w-full items-center gap-1">
           <vira-separator />
           <button type="button" (click)="card.set('signup')"
-            class="text-black dark:text-white font-semibold bg-white dark:bg-black w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:opacity-80 border border-gray-300 dark:border-white">Sign
-            up</button>
+            class="text-black dark:text-white font-semibold bg-white dark:bg-black w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:opacity-80 border border-gray-300 dark:border-white">ثبت‌نام</button>
         </div>
       </div>
     </form>
@@ -44,14 +43,14 @@
     <form
       class="flex flex-col justify-items-center items-center gap-4 dark:text-white rounded-4xl col-start-1 row-start-1"
       animate.enter="card-open" animate.leave="card-switch" (submit)="this.signUpSubmit($event)">
-      <h1 class="font-bold text-3xl w-full">Sign Up</h1>
+      <h1 class="font-bold text-3xl w-full">ثبت‌نام</h1>
       <div class="flex flex-col gap-2">
         <div>
           <vira-auth-input kind="username" [to]="signupForm.username" />
           <ol class="list-disc">
             @if(this.signupForm.username().touched() && this.signupForm().invalid()) {
             @for(err of this.signupForm.username().errors(); track err) {
-            <li class="text-red-600 text-xs ml-6">{{ err.message }}</li>
+            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
             }
             }
           </ol>
@@ -61,7 +60,7 @@
           <ol class="list-disc">
             @if(this.signupForm.email().touched() && this.signupForm().invalid()) {
             @for(err of this.signupForm.email().errors(); track err) {
-            <li class="text-red-600 text-xs ml-6">{{ err.message }}</li>
+            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
             }
             }
           </ol>
@@ -71,19 +70,19 @@
           <ol class="list-disc">
             @if(this.signupForm.password().touched() && this.signupForm().invalid()) {
             @for(err of this.signupForm.password().errors(); track err) {
-            <li class="text-red-600 text-xs ml-6">{{ err.message }}</li>
+            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
             }
             }
           </ol>
         </div>
       </div>
       <div class="flex flex-col gap-4 w-full">
-        <input type="submit" value="Create account"
+        <input type="submit" value="ساخت حساب کاربری"
           class="text-white dark:text-black font-semibold bg-gray-900 dark:bg-white w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:bg-black/80 dark:hover:bg-white/80" />
         <div class="flex flex-col w-full items-center gap-1">
           <vira-separator />
           <button type="button" (click)="card.set('login')"
-            class="text-black dark:text-white font-semibold bg-white dark:bg-black w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:opacity-80 border border-gray-300 dark:border-white">Login</button>
+            class="text-black dark:text-white font-semibold bg-white dark:bg-black w-full py-2 rounded-xl cursor-pointer active:scale-98 transition-all hover:opacity-80 border border-gray-300 dark:border-white">ورود</button>
         </div>
       </div>
     </form>

@@ -24,16 +24,16 @@ export class Auth {
   });
 
   loginForm = form(this.login, (l) => {
-    required(l.username, { message: "Username can't be blank." });
-    required(l.password, { message: "Password can't be blank." });
+    required(l.username, { message: 'نام کاربری نمی‌تواند خالی باشد.' });
+    required(l.password, { message: 'رمز عبور نمی‌تواند خالی باشد.' });
   });
   signupForm = form(this.singup, (s) => {
-    required(s.username, { message: "Username can't be blank." });
-    required(s.email, { message: "Email can't be blank." })
-    required(s.password, { message: "Password can't be blank." });
+    required(s.username, { message: 'نام کاربری نمی‌تواند خالی باشد.' });
+    required(s.email, { message: 'ایمیل نمی‌تواند خالی باشد.' })
+    required(s.password, { message: 'رمز عبور نمی‌تواند خالی باشد.' });
 
-    email(s.email, { message: "Enter a valid email." });
-    minLength(s.password, 8, { message: 'At least 8 characters' });
+    email(s.email, { message: 'یک ایمیل معتبر وارد کنید.' });
+    minLength(s.password, 8, { message: 'حداقل ۸ کاراکتر' });
   });
 
   card = model<'login' | 'signup'>('signup');
