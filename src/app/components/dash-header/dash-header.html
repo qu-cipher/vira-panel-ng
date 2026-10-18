@@ -1,0 +1,10 @@
+<header
+  class="flex flex-wrap items-center justify-between gap-4 min-h-[77px] px-8 py-4 font-[vazir]">
+  <div class="flex flex-col gap-0.5 min-w-0">
+    <h1 class="text-2xl font-[kufi] font-semibold text-black dark:text-white truncate">{{ title() }}</h1>
+    <p class="text-sm text-black/50 dark:text-white/50">{{ desc() }}</p>
+  </div>
+  <div class="flex flex-wrap items-center gap-2 text-sm">
+    <ng-content />
+  </div>
+</header>
