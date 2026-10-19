@@ -1,0 +1,65 @@
+<div class="flex flex-col w-full gap-0">
+  <div class="flex flex-col w-full gap-1 py-2">
+    <label class="text-sm font-bold text-black/50 dark:text-white/50" [for]="id">
+      {{ this.title() }}
+      @if (this.required()) {
+        <span class="text-red-600" aria-hidden="true">*</span>
+      }
+    </label>
+    <div class="relative w-full">
+      <button
+        type="button"
+        [id]="id"
+        class="w-full flex items-center justify-between gap-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent rounded-lg p-2 text-sm text-start outline-none cursor-pointer transition-all focus-visible:border-gray-500 dark:focus-visible:border-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
+        [class]="this.selected() ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
+        [disabled]="this.disabled()"
+        aria-haspopup="listbox"
+        [attr.aria-expanded]="this.isOpen()"
+        [attr.aria-controls]="id + '-list'"
+        [attr.aria-activedescendant]="this.isOpen() ? optionId(this.activeIndex()) : null"
+        [attr.aria-required]="this.required()"
+        (click)="toggle()"
+        (keydown)="onKeydown($event)"
+      >
+        <span class="truncate">{{ this.selected()?.label ?? this.placeholder() }}</span>
+        <svg
+          class="size-4 shrink-0 transition-transform"
+          [class.rotate-180]="this.isOpen()"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 11.17l3.71-3.94a.75.75 0 1 1 1.08 1.04l-4.25 4.5a.75.75 0 0 1-1.08 0l-4.25-4.5a.75.75 0 0 1 .02-1.06Z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+
+      @if (this.isOpen()) {
+        <ul
+          [id]="id + '-list'"
+          role="listbox"
+          [attr.aria-labelledby]="id"
+          class="absolute z-10 mt-1 w-full max-h-60 overflow-y-auto rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-900 p-1 text-sm shadow-lg"
+        >
+          @for (option of this.options(); track option.value; let i = $index) {
+            <li
+              [id]="optionId(i)"
+              role="option"
+              [attr.aria-selected]="option.value === this.value()"
+              class="px-2 py-1.5 rounded-md cursor-pointer select-none"
+              [class]="optionClass(option, i)"
+              (click)="select(option)"
+              (mouseenter)="activeIndex.set(i)"
+            >
+              {{ option.label }}
+            </li>
+          }
+        </ul>
+      }
+    </div>
+  </div>
+  <p class="text-black/50 dark:text-white/50 text-xs px-2 w-full">{{ this.desc() }}</p>
+</div>

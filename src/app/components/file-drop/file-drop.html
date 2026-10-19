@@ -1,0 +1,86 @@
+<div class="flex flex-col w-full gap-0">
+  <div class="flex flex-col w-full gap-1 py-2">
+    <p class="text-sm font-bold text-black/50 dark:text-white/50">
+      {{ this.title() }}
+      @if (this.required()) {
+        <span class="text-red-600" aria-hidden="true">*</span>
+      }
+    </p>
+
+    <input
+      #fileInput
+      type="file"
+      class="hidden"
+      [accept]="this.accept()"
+      [multiple]="this.multiple()"
+      [disabled]="this.disabled()"
+      (change)="onFileInput($event)"
+    />
+
+    <button
+      type="button"
+      class="w-full flex flex-col items-center justify-center gap-2 py-6 px-4 rounded-lg border border-dashed text-sm outline-none cursor-pointer transition-all focus-visible:border-gray-500 dark:focus-visible:border-gray-400 disabled:cursor-not-allowed disabled:opacity-50"
+      [class]="
+        this.isDragging()
+          ? 'border-blue-500 bg-blue-50 dark:bg-blue-500/10 text-blue-600 dark:text-blue-400'
+          : 'border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent text-black/60 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/5'
+      "
+      [disabled]="this.disabled()"
+      [attr.aria-label]="this.title() + ' - ' + this.innerTitle()"
+      (click)="fileInput.click()"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave()"
+      (drop)="onDrop($event)"
+    >
+      <svg
+        class="size-5 pointer-events-none"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 16V4M7 9l5-5 5 5M5 20h14"></path>
+      </svg>
+      <span class="pointer-events-none">{{ this.innerTitle() }}</span>
+    </button>
+
+    @if (this.files().length > 0) {
+      <ul class="flex flex-col gap-1">
+        @for (file of this.files(); track file) {
+          <li
+            class="flex items-center justify-between gap-2 px-2 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent text-sm"
+          >
+            <span class="truncate text-black dark:text-white" dir="ltr">{{ file.name }}</span>
+            <span class="flex items-center gap-2 shrink-0">
+              <span class="text-xs text-black/50 dark:text-white/50" dir="ltr">{{
+                formatSize(file.size)
+              }}</span>
+              <button
+                type="button"
+                class="p-0.5 rounded-md cursor-pointer text-black/50 dark:text-white/50 hover:text-red-600 dark:hover:text-red-500 transition-all"
+                aria-label="حذف فایل"
+                (click)="remove(file)"
+              >
+                <svg
+                  class="size-4"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 6l12 12M18 6L6 18"></path>
+                </svg>
+              </button>
+            </span>
+          </li>
+        }
+      </ul>
+    }
+  </div>
+  <p class="text-black/50 dark:text-white/50 text-xs px-2 w-full">{{ this.desc() }}</p>
+</div>
