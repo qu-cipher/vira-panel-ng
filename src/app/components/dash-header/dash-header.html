@@ -5,6 +5,45 @@
     <p class="text-sm text-black/50 dark:text-white/50">{{ desc() }}</p>
   </div>
   <div class="flex flex-wrap items-center gap-2 text-sm">
-    <ng-content />
+    <vira-round-box>
+      <span class="text-black/50 dark:text-white/50 flex items-center gap-1">
+        <svg
+          class="ic"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 7h17v13H3zM3 7l13-4v4M15 13.5h5"></path>
+        </svg>
+        موجودی:
+      </span>
+      <span class="font-semibold">بی‌نهایت</span>
+    </vira-round-box>
+    <vira-round-box>
+      <span class="text-black/50 dark:text-white/50 flex items-center gap-1">
+        <svg
+          class="ic"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.8"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2"></path>
+        </svg>
+        زمان باقیمانده:
+      </span>
+      <span class="font-semibold">ابدا</span>
+      </vira-round-box>
   </div>
 </header>
