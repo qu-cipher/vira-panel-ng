@@ -1,0 +1,16 @@
+<label class="relative inline-flex shrink-0 cursor-pointer has-disabled:cursor-not-allowed has-disabled:opacity-50">
+  <input
+    type="checkbox"
+    role="switch"
+    class="peer sr-only"
+    [checked]="this.checked()"
+    [disabled]="this.disabled()"
+    (change)="onChange($event)"
+  />
+  <span
+    class="h-6 w-10 rounded-full bg-gray-300 dark:bg-gray-700 transition-colors peer-checked:bg-emerald-600 peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-gray-400"
+  ></span>
+  <span
+    class="pointer-events-none absolute top-0.5 start-0.5 size-5 rounded-full bg-white shadow transition-transform peer-checked:translate-x-4 rtl:peer-checked:-translate-x-4"
+  ></span>
+</label>
