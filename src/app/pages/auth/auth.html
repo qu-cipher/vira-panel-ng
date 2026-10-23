@@ -1,11 +1,11 @@
-<div dir="rtl" class="w-full h-screen bg-gray-200 dark:bg-gray-950 flex items-center justify-center">
+<div dir="rtl" class="w-full h-screen bg-gray-100 dark:bg-gray-950 flex items-center justify-center">
   <div class="grid place-items-center w-4/5 h-4/5">
     @switch (card()) {
     @case ('login') {
     <form
       class="flex flex-col justify-items-center items-center gap-4 dark:text-white rounded-4xl col-start-1 row-start-1"
       animate.enter="card-open" animate.leave="card-switch" (submit)="this.loginSubmit($event)">
-      <h1 class="font-bold text-3xl w-full">خوش برگشتی!</h1>
+      <h1 class="font-bold text-3xl w-full">ورود</h1>
       <div class="flex flex-col gap-2">
         <div>
           <vira-auth-input kind="username" [to]="loginForm.username" />
