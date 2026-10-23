@@ -1,0 +1,173 @@
+<vira-dash-header title="تنظیمات" desc="تنظیمات اعلان ها و امنیت حساب" />
+<div class="px-8 w-full">
+  <div class="w-full h-full flex flex-col gap-4">
+    <div class="flex flex-row gap-8 border-b border-b-gray-300 dark:border-b-gray-700 p-2">
+      <button
+        (click)="switchToNotif()"
+        class="cursor-pointer transition-all"
+        [class]="this.view() == 'notif' ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
+      >
+        اعلان ها
+      </button>
+      <button
+        (click)="switchToSecurity()"
+        class="cursor-pointer transition-all"
+        [class]="this.view() == 'security' ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
+      >
+        امنیت
+      </button>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="grid grid-cols-2 gap-2">
+        @switch (this.view()) { @case ('notif') {
+        <div
+          class="col-span-2 overflow-x-auto rounded-lg"
+        >
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-gray-300 dark:border-gray-700">
+                <th
+                  scope="col"
+                  class="px-4 py-2.5 text-start font-bold text-black/50 dark:text-white/50"
+                >
+                  نوع اعلان
+                </th>
+                <th
+                  scope="col"
+                  class="w-24 px-4 py-2.5 text-center font-bold text-black/50 dark:text-white/50"
+                >
+                  پیامک
+                </th>
+                <th
+                  scope="col"
+                  class="w-24 px-4 py-2.5 text-center font-bold text-black/50 dark:text-white/50"
+                >
+                  ایمیل
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (n of this.notifications; track n.title) {
+              <tr class="transition-colors">
+                <th scope="row" class="px-4 py-3 text-start font-normal">
+                  <span class="flex flex-col gap-0.5">
+                    <span class="font-bold text-black dark:text-white">{{ n.title }}</span>
+                    <span class="text-xs text-black/50 dark:text-white/50">{{ n.desc }}</span>
+                  </span>
+                </th>
+                <td class="px-4 py-3 text-center align-middle">
+                  <vira-switch />
+                </td>
+                <td class="px-4 py-3 text-center align-middle">
+                  <vira-switch />
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <section class="col-span-2 flex flex-col gap-2 mt-4 pt-4">
+          <h2 class="text-lg font-[kufi] font-semibold text-black dark:text-white">
+            سایر گیرندگان پیامک ها
+          </h2>
+
+          @if (this.otherRecievers().length > 0) {
+          <ul
+            class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent"
+          >
+            @for (r of this.otherRecievers(); track r.phone) {
+            <li class="flex items-center justify-between gap-4 px-3 py-2">
+              <div class="flex items-center gap-3 min-w-0">
+                <div
+                  class="shrink-0 size-9 rounded-xl bg-gray-200 dark:bg-gray-900 text-black dark:text-white font-bold flex items-center justify-center"
+                >
+                  {{ r.name.charAt(0) }}
+                </div>
+                <div class="flex flex-col min-w-0">
+                  <p class="text-sm font-bold text-black dark:text-white truncate">{{ r.name }}</p>
+                  <p class="text-xs text-black/50 dark:text-white/50">
+                    <span dir="ltr">{{ r.phone }}</span>
+                  </p>
+                </div>
+              </div>
+              <button
+                type="button"
+                (click)="removeReceiver(r)"
+                class="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-sm cursor-pointer text-black/50 dark:text-white/50 hover:text-red-600 hover:bg-red-50 dark:hover:text-red-500 dark:hover:bg-red-500/10 active:scale-95 transition-all"
+              >
+                <svg
+                  class="ic"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path>
+                </svg>
+                حذف
+              </button>
+            </li>
+            }
+          </ul>
+          } @else {
+          <p
+            class="rounded-lg border border-dashed border-gray-300 dark:border-gray-700 px-3 py-4 text-center text-sm text-black/50 dark:text-white/50"
+          >
+            هنوز گیرنده‌ای اضافه نشده است
+          </p>
+          }
+
+          <div>
+            <div class="flex flex-col sm:flex-row gap-2 sm:items-end">
+              <vira-title-input
+                class="flex-1"
+                title="نام"
+                [(value)]="newName"
+              />
+              <vira-title-input
+                class="flex-1"
+                title="شماره همراه"
+                [(value)]="newPhone"
+              />
+              <vira-button kind="ocean" class="sm:mb-2">
+                <svg
+                  class="ic"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12h14"></path>
+                </svg>
+                افزودن
+              </vira-button>
+            </div>
+          </div>
+        </section>
+        } @case ('security') {
+        <vira-title-input title="رمز فعلی" />
+        <div></div>
+        <vira-title-input title="رمز جدید" />
+        <vira-title-input title="تکرار رمز جدید" />
+        <vira-title-switch
+          title="ورود دومرحله‌ای با پیامک"
+          desc="کد یک‌بارمصرف به ۰۹۱۴۱۲۳۴۵۶۷ ارسال می‌شود"
+          class="col-span-2"
+        />
+        <vira-button kind="mint"> بروزرسانی رمز </vira-button>
+
+        } }
+      </div>
+    </div>
+  </div>
+</div>

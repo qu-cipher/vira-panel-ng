@@ -8,7 +8,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './nav-item.html',
 })
 export class NavItem {
-  kind = input<'overview' | 'plans' | 'wallet' | 'profile'>('overview');
+  kind = input<'overview' | 'plans' | 'wallet' | 'profile' | 'settings'>('overview');
   text = input('overview');
   link = input.required<string>();
 }

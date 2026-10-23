@@ -7,6 +7,7 @@ import { Plans } from './pages/dashboard/plans/plans';
 import { Wallet } from './pages/dashboard/wallet/wallet';
 import { Profile } from './pages/dashboard/profile/profile';
 import { NotFound } from './pages/not-found/not-found';
+import { Settings } from './pages/dashboard/settings/settings';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -20,6 +21,7 @@ export const routes: Routes = [
             { path: 'plans', component: Plans },
             { path: 'wallet', component: Wallet },
             { path: 'profile', component: Profile },
+            { path: 'settings', component: Settings },
         ],
     },
     { path: 'dashboard', redirectTo: 'dash' },

@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, computed, input } from '@angular/core';
+import { booleanAttribute, Component, computed, input, model } from '@angular/core';
 
 @Component({
   imports: [],
@@ -7,7 +7,12 @@ import { booleanAttribute, Component, computed, input } from '@angular/core';
   templateUrl: './title-input.html',
 })
 export class TitleInput {
-  title = input.required<string>();
+  title = input<string>('');
   required = input<boolean>(false, { transform: booleanAttribute });
   desc = input<string>('');
+  value = model<string>('');
+
+  onInput(event: Event) {
+    this.value.set((event.target as HTMLInputElement).value);
+  }
 }
