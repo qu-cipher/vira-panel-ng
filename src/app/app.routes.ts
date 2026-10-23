@@ -8,6 +8,7 @@ import { Wallet } from './pages/dashboard/wallet/wallet';
 import { Profile } from './pages/dashboard/profile/profile';
 import { NotFound } from './pages/not-found/not-found';
 import { Settings } from './pages/dashboard/settings/settings';
+import { Test } from './pages/test/test';
 
 export const routes: Routes = [
     { path: '', component: Home },
@@ -25,5 +26,6 @@ export const routes: Routes = [
         ],
     },
     { path: 'dashboard', redirectTo: 'dash' },
+    { path: 'test', component: Test },
     { path: '**', component: NotFound }
 ];
