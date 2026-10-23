@@ -1,7 +1,45 @@
 <vira-dash-header title="داشبورد" desc="نگاه کلی به اشتراک"/>
-<vira-notification
-  title="مصرف پیام‌های تله‌متری به ۸۲٪ سقف ماهانه رسیده است."
-  desc="با روند فعلی تا پایان دوره حدود ۵٫۹ میلیون پیام (۱۱۸٪) ارسال می‌شود. پلن «سازمانی» این حجم را پوشش می‌دهد.">
-  <vira-button>مقایسه پلن‌ها</vira-button>
-  <vira-button kind="mint">ارتقا به سازمانی</vira-button>
-</vira-notification>
+<div class="flex flex-col gap-4 p-4">
+  <vira-notification
+    title="مصرف پیام‌های تله‌متری به ۸۲٪ سقف ماهانه رسیده است."
+    desc="با روند فعلی تا پایان دوره حدود ۵٫۹ میلیون پیام (۱۱۸٪) ارسال می‌شود. پلن «سازمانی» این حجم را پوشش می‌دهد.">
+    <vira-button (click)="test()">مقایسه پلن‌ها</vira-button>
+    <vira-button kind="mint">ارتقا به سازمانی</vira-button>
+  </vira-notification>
+  <div class="grid grid-cols-1 md:grid-cols-[1.5fr_1fr] xl:grid-cols-[1.5fr_1fr_1fr] gap-2">
+    <vira-card title="اشتراک فعلی">
+      <content>
+        <div class="w-full flex items-center justify-between gap-6 p-4">
+          <div class="flex flex-col gap-4 min-w-0">
+            <h1 class="text-2xl font-[kufi]">حرفه‌ای</h1>
+            <div class="grid grid-cols-[auto_1fr] items-baseline gap-x-6 gap-y-1">
+              <span class="font-bold">دوره</span>
+              <span class="text-sm text-black/50 dark:text-white/50">سه‌ماهه</span>
+              <span class="font-bold">انقضا</span>
+              <span class="text-sm text-black/50 dark:text-white/50">۱۴۰۵/۰۸/۰۲</span>
+              <span class="font-bold">سقف</span>
+              <span class="text-sm text-black/50 dark:text-white/50">۵۰ دستگاه · ۵ میلیون پیام/ماه</span>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <vira-button kind="mint">تمدید اشتراک</vira-button>
+              <vira-button kind="default">تغییر پلن</vira-button>
+            </div>
+          </div>
+          <vira-pie class="shrink-0 size-28 sm:size-36" />
+        </div>
+      </content>
+    </vira-card>
+    <vira-card title="دستگاه های متصل">
+      <content>
+        <div class="w-full flex flex-col justify-center gap-1 p-4">
+          <p class="text-black/50 dark:text-white/50 text-xl">
+            <span class="text-black dark:text-white font-bold text-4xl">42</span>
+            از
+            50
+          </p>
+          <vira-hbar [percent]="84" />
+        </div>
+      </content>
+    </vira-card>
+  </div>
+</div>
