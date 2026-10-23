@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Toaster } from './components/toaster/toaster';
 
 @Component({
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Toaster],
   selector: 'vira-root',
   styleUrl: './app.css',
   templateUrl: './app.html',

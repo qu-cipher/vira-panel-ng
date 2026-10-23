@@ -1,0 +1,19 @@
+.toaster-open {
+  animation: toaster-in 200ms ease-out;
+}
+
+.toaster-close {
+  animation: toaster-out 200ms ease-in;
+}
+
+@keyframes toaster-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+}
+
+@keyframes toaster-out {
+  to { opacity: 0; transform: translateY(-16px) scale(0.98); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toaster-open, .toaster-close { animation: none; }
+}

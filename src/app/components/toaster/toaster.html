@@ -1,0 +1,11 @@
+<div class="fixed bottom-4 w-full h-fit flex flex-col items-center justify-center gap-2 z-50">
+  @for (t of toast.toasts(); track t.id) {
+    <div
+      [class]="theme(t.kind)"
+      class="select-none flex items-center justify-center w-fit rounded-xl border backdrop-blur p-4"
+      animate.enter="toaster-open"
+      animate.leave="toaster-close">
+      <p>{{ t.title }}</p>
+    </div>
+  }
+</div>
