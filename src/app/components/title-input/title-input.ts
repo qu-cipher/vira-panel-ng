@@ -7,9 +7,11 @@ import { booleanAttribute, Component, computed, input, model } from '@angular/co
   templateUrl: './title-input.html',
 })
 export class TitleInput {
+  type = input<'text' | 'number'>('text');
   title = input<string>('');
   required = input<boolean>(false, { transform: booleanAttribute });
   desc = input<string>('');
+  placeholder = input<string>('');
   value = model<string>('');
 
   onInput(event: Event) {

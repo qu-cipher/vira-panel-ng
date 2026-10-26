@@ -7,7 +7,7 @@ import { FieldTree, FormField } from '@angular/forms/signals';
   styleUrl: './input.css',
   templateUrl: './input.html',
 })
-export class Input {
+export class AuthInput {
   to = input.required<FieldTree<string>>();
   kind = input.required<'email' | 'username' | 'password'>();
   size = signal(24);
