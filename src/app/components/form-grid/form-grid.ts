@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   selector: 'vira-form-grid',
   styleUrl: './form-grid.css',
   templateUrl: './form-grid.html',
-  host: { class: 'grid grid-cols-2 gap-2' },
+  host: { class: 'grid grid-cols-2 gap-5' },
 })
 export class FormGrid {}

@@ -35,20 +35,20 @@
           </thead>
           <tbody>
             @for (n of this.notifications; track n.title) {
-            <tr class="transition-colors">
-              <th scope="row" class="px-4 py-3 text-start font-normal">
-                <span class="flex flex-col gap-0.5">
-                  <span class="font-bold text-black dark:text-white">{{ n.title }}</span>
-                  <span class="text-xs text-black/50 dark:text-white/50">{{ n.desc }}</span>
-                </span>
-              </th>
-              <td class="px-4 py-3 text-center align-middle">
-                <vira-switch />
-              </td>
-              <td class="px-4 py-3 text-center align-middle">
-                <vira-switch />
-              </td>
-            </tr>
+              <tr class="transition-colors">
+                <th scope="row" class="px-4 py-3 text-start font-normal">
+                  <span class="flex flex-col gap-0.5">
+                    <span class="font-bold text-black dark:text-white">{{ n.title }}</span>
+                    <span class="text-xs text-black/50 dark:text-white/50">{{ n.desc }}</span>
+                  </span>
+                </th>
+                <td class="px-4 py-3 text-center align-middle">
+                  <vira-switch />
+                </td>
+                <td class="px-4 py-3 text-center align-middle">
+                  <vira-switch />
+                </td>
+              </tr>
             }
           </tbody>
         </table>
@@ -60,81 +60,78 @@
         </h2>
 
         @if (this.otherRecievers().length > 0) {
-        <ul
-          class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent"
-        >
+          <ul
+            class="flex flex-col divide-y divide-gray-300 dark:divide-gray-700 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-transparent"
+          >
           @for (r of this.otherRecievers(); track r.phone) {
-          <li class="flex items-center justify-between gap-4 px-3 py-2">
-            <div class="flex items-center gap-3 min-w-0">
-              <vira-avatar>{{ r.name.charAt(0) }}</vira-avatar>
-              <div class="flex flex-col min-w-0">
-                <p class="text-sm font-bold text-black dark:text-white truncate">{{ r.name }}</p>
-                <p class="text-xs text-black/50 dark:text-white/50">
-                  <span dir="ltr">{{ r.phone }}</span>
-                </p>
+            <li class="flex items-center justify-between gap-4 px-3 py-2">
+              <div class="flex items-center gap-3 min-w-0">
+                <vira-avatar>{{ r.name.charAt(0) }}</vira-avatar>
+                <div class="flex flex-col min-w-0">
+                  <p class="text-sm font-bold text-black dark:text-white truncate">{{ r.name }}</p>
+                  <p class="text-xs text-black/50 dark:text-white/50">
+                    <span dir="ltr">{{ r.phone }}</span>
+                  </p>
+                </div>
               </div>
-            </div>
-            <button
-              type="button"
-              (click)="removeReceiver(r)"
-              class="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-sm cursor-pointer text-black/50 dark:text-white/50 hover:text-red-600 hover:bg-red-50 dark:hover:text-red-500 dark:hover:bg-red-500/10 active:scale-95 transition-all"
-            >
-              <svg
-                class="ic"
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                aria-hidden="true"
+              <button
+                type="button"
+                (click)="removeReceiver(r)"
+                class="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-sm cursor-pointer text-black/50 dark:text-white/50 hover:text-red-600 hover:bg-red-50 dark:hover:text-red-500 dark:hover:bg-red-500/10 active:scale-95 transition-all"
               >
-                <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path>
-              </svg>
-              حذف
-            </button>
-          </li>
-          }
-        </ul>
+                <svg
+                  class="ic"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"></path>
+                </svg>
+                حذف
+              </button>
+            </li>
+            }
+          </ul>
         } @else {
-        <p
-          class="rounded-lg border border-dashed border-gray-300 dark:border-gray-700 px-3 py-4 text-center text-sm text-black/50 dark:text-white/50"
-        >
-          هنوز گیرنده‌ای اضافه نشده است
-        </p>
+          <p
+            class="rounded-lg border border-dashed border-gray-300 dark:border-gray-700 px-3 py-4 text-center text-sm text-black/50 dark:text-white/50"
+          >
+            هنوز گیرنده‌ای اضافه نشده است
+          </p>
         }
 
-        <div>
-          <div class="flex flex-col sm:flex-row gap-2 sm:items-end">
-            <vira-title-input
-              class="flex-1"
-              title="نام"
-              [(value)]="newName"
-            />
-            <vira-title-input
-              class="flex-1"
-              title="شماره همراه"
-              [(value)]="newPhone"
-            />
-            <vira-button kind="ocean" class="sm:mb-2">
-              <svg
-                class="ic"
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                aria-hidden="true"
-              >
-                <path d="M12 5v14M5 12h14"></path>
-              </svg>
-              افزودن
-            </vira-button>
-          </div>
+        <div class="flex flex-col md:flex-row gap-2 md:items-end">
+          <vira-title-input
+            class="flex-1"
+            title="نام"
+            [(value)]="newName"
+          />
+          <vira-title-input
+            class="flex-1"
+            title="شماره همراه"
+            [(value)]="newPhone"
+          />
+          <vira-button kind="ocean">
+            <svg
+              class="ic"
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M12 5v14M5 12h14"></path>
+            </svg>              افزودن
+          </vira-button>
         </div>
       </section>
       } @case ('security') {
@@ -147,8 +144,7 @@
         desc="کد یک‌بارمصرف به ۰۹۱۴۱۲۳۴۵۶۷ ارسال می‌شود"
         class="col-span-2"
       />
-      <vira-button kind="mint"> بروزرسانی رمز </vira-button>
-
+      <vira-button kind="mint" class="w-fit"> بروزرسانی رمز </vira-button>
       } }
     </vira-form-grid>
   </div>
