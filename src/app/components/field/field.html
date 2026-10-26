@@ -1,0 +1,8 @@
+<ng-content />
+<ol class="list-disc">
+  @if (this.field()().touched() && this.field()().invalid()) {
+    @for (err of this.field()().errors(); track err) {
+      <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
+    }
+  }
+</ol>

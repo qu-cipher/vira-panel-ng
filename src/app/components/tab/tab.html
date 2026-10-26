@@ -1,0 +1,9 @@
+<button
+  type="button"
+  role="tab"
+  class="cursor-pointer transition-all"
+  [class]="this.active() ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
+  [attr.aria-selected]="this.active()"
+>
+  <ng-content />
+</button>
