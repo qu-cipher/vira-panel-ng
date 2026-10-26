@@ -18,8 +18,14 @@ interface NotificationSetting {
   email: boolean;
 }
 
+import { Page } from '../../../components/page/page';
+import { Tabs } from '../../../components/tabs/tabs';
+import { Tab } from '../../../components/tab/tab';
+import { FormGrid } from '../../../components/form-grid/form-grid';
+import { Avatar } from '../../../components/avatar/avatar';
+
 @Component({
-  imports: [DashHeader, Switch, Button, TitleInput, TitleSwitch],
+  imports: [DashHeader, Switch, Button, TitleInput, TitleSwitch, Page, Tabs, Tab, FormGrid, Avatar],
   selector: 'vira-settings',
   styleUrl: './settings.css',
   templateUrl: './settings.html',

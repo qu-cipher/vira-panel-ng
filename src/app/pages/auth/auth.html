@@ -7,26 +7,12 @@
       animate.enter="card-open" animate.leave="card-switch" (submit)="this.loginSubmit($event)">
       <h1 class="font-bold text-3xl w-full">ورود</h1>
       <div class="flex flex-col gap-2">
-        <div>
+        <vira-field [field]="loginForm.username">
           <vira-auth-input kind="username" [to]="loginForm.username" />
-          <ol class="list-disc">
-            @if(this.loginForm.username().touched() && this.loginForm().invalid()) {
-            @for(err of this.loginForm.username().errors(); track err) {
-            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
-            }
-            }
-          </ol>
-        </div>
-        <div>
+        </vira-field>
+        <vira-field [field]="loginForm.password">
           <vira-auth-input kind="password" [to]="loginForm.password" />
-          <ol class="list-disc">
-            @if(this.loginForm.password().touched() && this.loginForm().invalid()) {
-            @for(err of this.loginForm.password().errors(); track err) {
-            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
-            }
-            }
-          </ol>
-        </div>
+        </vira-field>
       </div>
       <div class="flex flex-col gap-4 w-full">
         <input type="submit" value="ورود"
@@ -45,36 +31,15 @@
       animate.enter="card-open" animate.leave="card-switch" (submit)="this.signUpSubmit($event)">
       <h1 class="font-bold text-3xl w-full">ثبت‌نام</h1>
       <div class="flex flex-col gap-2">
-        <div>
+        <vira-field [field]="signupForm.username">
           <vira-auth-input kind="username" [to]="signupForm.username" />
-          <ol class="list-disc">
-            @if(this.signupForm.username().touched() && this.signupForm().invalid()) {
-            @for(err of this.signupForm.username().errors(); track err) {
-            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
-            }
-            }
-          </ol>
-        </div>
-        <div>
+        </vira-field>
+        <vira-field [field]="signupForm.email">
           <vira-auth-input kind="email" [to]="signupForm.email" />
-          <ol class="list-disc">
-            @if(this.signupForm.email().touched() && this.signupForm().invalid()) {
-            @for(err of this.signupForm.email().errors(); track err) {
-            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
-            }
-            }
-          </ol>
-        </div>
-        <div>
+        </vira-field>
+        <vira-field [field]="signupForm.password">
           <vira-auth-input kind="password" [to]="signupForm.password" />
-          <ol class="list-disc">
-            @if(this.signupForm.password().touched() && this.signupForm().invalid()) {
-            @for(err of this.signupForm.password().errors(); track err) {
-            <li class="text-red-600 text-xs ms-6">{{ err.message }}</li>
-            }
-            }
-          </ol>
-        </div>
+        </vira-field>
       </div>
       <div class="flex flex-col gap-4 w-full">
         <input type="submit" value="ساخت حساب کاربری"

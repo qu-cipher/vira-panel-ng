@@ -43,8 +43,13 @@ const PROVINCES: Record<string, readonly string[]> = {
 
 const toOption = (name: string): DropdownOption => ({ value: name, label: name });
 
+import { Page } from '../../../components/page/page';
+import { Tabs } from '../../../components/tabs/tabs';
+import { Tab } from '../../../components/tab/tab';
+import { FormGrid } from '../../../components/form-grid/form-grid';
+
 @Component({
-  imports: [DashHeader, TitleInput, Button, Dropdown, FileDrop],
+  imports: [DashHeader, TitleInput, Button, Dropdown, FileDrop, Page, Tabs, Tab, FormGrid],
   selector: 'vira-profile',
   styleUrl: './profile.css',
   templateUrl: './profile.html',

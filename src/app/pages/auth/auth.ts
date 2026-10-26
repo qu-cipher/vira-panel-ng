@@ -5,8 +5,10 @@ import { LoginModel } from '../../shared/types/login';
 import { SignUpModel } from '../../shared/types/signup';
 import { AuthInput } from '../../components/auth-input/input';
 
+import { Field } from '../../components/field/field';
+
 @Component({
-  imports: [AuthInput, Separator],
+  imports: [AuthInput, Separator, Field],
   selector: 'vira-auth-auth',
   styleUrl: './auth.css',
   templateUrl: './auth.html',

@@ -6,6 +6,7 @@ import { Kinds, Themes } from '../../shared/types/kinds.theme';
   selector: 'vira-button',
   styleUrl: './button.css',
   templateUrl: './button.html',
+  host: { class: 'inline-flex' }
 })
 export class Button {
   kind = input<Kinds>('default');

@@ -1,75 +1,60 @@
 <vira-dash-header title="پروفایل" desc="اطلاعات حساب شخصی و شرکت" />
-<div class="px-8 w-full">
-  <!-- TODO: REMOVE BACKGROUND + ROUNDED BORDER -->
-  <div class="w-full h-full flex flex-col gap-4">
-    <div class="flex flex-row gap-8 border-b border-b-gray-300 dark:border-b-gray-700 p-2">
-      <button
-        (click)="switchToPersonal()"
-        class="cursor-pointer transition-all"
-        [class]="this.view() == 'personal' ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
-      >
-        اطلاعات شخصی
-      </button>
-      <button
-        (click)="switchToLegal()"
-        class="cursor-pointer transition-all"
-        [class]="this.view() == 'legal' ? 'text-black dark:text-white' : 'text-black/50 dark:text-white/50'"
-      >
-        اطلاعات حقوقی
-      </button>
-    </div>
-    <div class="flex flex-col gap-2">
-      <div class="grid grid-cols-2 gap-2">
-        @switch (this.view()) {
-          @case ('personal') {
-          <vira-title-input title="نام و نام خانوادگی" />
-          <vira-title-input title="کد ملی" />
-          <vira-title-input
-            title="شماره همراه"
-            desc="پیامک‌های یادآوری و هشدار به این شماره ارسال می‌شود"
-          >
-          <vira-button kind="ocean">تایید</vira-button>
-          </vira-title-input>
-          <vira-title-input title="ایمیل" />
-          <vira-title-input title="سمت" />
-          <vira-dropdown
-            title="نوع حساب"
-            [options]="accountType"
-          />
-          }
-          @case ('legal') {
-            <vira-title-input title="نام شرکت/سازمان" required />
-            <vira-title-input title="شناسه ملی" required />
-            <vira-title-input title="کد اقتصادی" required />
-            <vira-title-input title="شماره ثبت" required />
-            <vira-title-input title="تلفن ثابت" required />
-            <vira-title-input title="کدپستی" required />
-            <vira-dropdown
-              title="استان"
-              required
-              [options]="stateOptions"
-              [(value)]="selectedState"
-            />
-            <vira-dropdown
-              title="شهر"
-              required
-              [options]="cityOptions()"
-              [(value)]="selectedCity"
-              [disabled]="!selectedState()"
-              [placeholder]="selectedState() ? 'انتخاب کنید' : 'ابتدا استان را انتخاب کنید'"
-            />
-            <vira-title-input title="نشانی کامل" class="col-span-2" required />
-            <vira-file-drop
-              class="col-span-2"
-              title="آگهی تأسیس یا آخرین تغییرات (اختیاری)"
-              innerTitle="بارگذاری فایل روزنامه رسمی"
-              accept=".pdf,image/*"
-              [(files)]="fileInput"
-            />
-          }
+<vira-page>
+  <vira-tabs>
+    <vira-tab [active]="this.view() == 'personal'" (click)="switchToPersonal()">اطلاعات شخصی</vira-tab>
+    <vira-tab [active]="this.view() == 'legal'" (click)="switchToLegal()">اطلاعات حقوقی</vira-tab>
+  </vira-tabs>
+  <div class="flex flex-col gap-2">
+    <vira-form-grid>
+      @switch (this.view()) {
+        @case ('personal') {
+        <vira-title-input title="نام و نام خانوادگی" />
+        <vira-title-input title="کد ملی" />
+        <vira-title-input
+          title="شماره همراه"
+          desc="پیامک‌های یادآوری و هشدار به این شماره ارسال می‌شود"
+        >
+        <vira-button kind="ocean">تایید</vira-button>
+        </vira-title-input>
+        <vira-title-input title="ایمیل" />
+        <vira-title-input title="سمت" />
+        <vira-dropdown
+          title="نوع حساب"
+          [options]="accountType"
+        />
         }
-      </div>
-      <vira-button kind="mint">ذخیره</vira-button>
-    </div>
+        @case ('legal') {
+          <vira-title-input title="نام شرکت/سازمان" required />
+          <vira-title-input title="شناسه ملی" required />
+          <vira-title-input title="کد اقتصادی" required />
+          <vira-title-input title="شماره ثبت" required />
+          <vira-title-input title="تلفن ثابت" required />
+          <vira-title-input title="کدپستی" required />
+          <vira-dropdown
+            title="استان"
+            required
+            [options]="stateOptions"
+            [(value)]="selectedState"
+          />
+          <vira-dropdown
+            title="شهر"
+            required
+            [options]="cityOptions()"
+            [(value)]="selectedCity"
+            [disabled]="!selectedState()"
+            [placeholder]="selectedState() ? 'انتخاب کنید' : 'ابتدا استان را انتخاب کنید'"
+          />
+          <vira-title-input title="نشانی کامل" class="col-span-2" required />
+          <vira-file-drop
+            class="col-span-2"
+            title="آگهی تأسیس یا آخرین تغییرات (اختیاری)"
+            innerTitle="بارگذاری فایل روزنامه رسمی"
+            accept=".pdf,image/*"
+            [(files)]="fileInput"
+          />
+        }
+      }
+    </vira-form-grid>
+    <vira-button kind="mint">ذخیره</vira-button>
   </div>
-</div>
+</vira-page>
