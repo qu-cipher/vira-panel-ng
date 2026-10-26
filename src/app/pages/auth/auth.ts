@@ -3,10 +3,10 @@ import { Separator } from '../../components/separator/separator';
 import { form, required, email, minLength } from '@angular/forms/signals';
 import { LoginModel } from '../../shared/types/login';
 import { SignUpModel } from '../../shared/types/signup';
-import { Input } from '../../components/auth-input/input';
+import { AuthInput } from '../../components/auth-input/input';
 
 @Component({
-  imports: [Input, Separator],
+  imports: [AuthInput, Separator],
   selector: 'vira-auth-auth',
   styleUrl: './auth.css',
   templateUrl: './auth.html',
